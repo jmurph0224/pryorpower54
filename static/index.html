@@ -1,11 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="static/styles.css">
   <title>Appointment Scheduler</title>
 </head>
+
 <body>
 
-<h1>Select a Date</h1>
+<h1 class="date">Select a Date</h1>
+
 <input type="date" id="selectedDate">
 
 <h1>Select a Time Slot</h1>
@@ -22,6 +27,8 @@
 </select>
 
 <button onclick="scheduleAppointment()">Schedule</button>
+
+
 
 <script>
   function scheduleAppointment() {
