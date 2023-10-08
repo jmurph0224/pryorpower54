@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Appointment Scheduler</title>
+</head>
+<body>
+
+<h1>Select a Date</h1>
+<input type="date" id="selectedDate">
+
+<h1>Select a Time Slot</h1>
+<select id="timeSlot">
+  <option value="9">9:00 AM - 10:00 AM</option>
+  <option value="10">10:00 AM - 11:00 AM</option>
+  <option value="11">11:00 AM - 12:00 PM</option>
+  <option value="12">12:00 PM - 1:00 PM</option>
+  <option value="1">1:00 PM - 2:00 PM</option>
+  <option value="2">2:00 PM - 3:00 PM</option>
+  <option value="3">3:00 PM - 4:00 PM</option>
+  <option value="4">4:00 PM - 5:00 PM</option>
+  <!-- Add more time slots here -->
+</select>
+
+<button onclick="scheduleAppointment()">Schedule</button>
+
+<script>
+  function scheduleAppointment() {
+    const date = document.getElementById('selectedDate').value;
+    const timeSlot = document.getElementById('timeSlot').value;
+
+    fetch('/schedule', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        date: date,
+        timeSlot: timeSlot
+      })
+    })
+    .then(response => response.json())
+    .then(data => alert(data.message));
+  }
+</script>
+
+</body>
+</html>
